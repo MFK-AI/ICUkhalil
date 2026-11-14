@@ -74,6 +74,12 @@ const h = site.honour;
         <div class="rows"><div><span class="when">Jul 2015</span><div><h3>{h.title}</h3><p>Emergency airway save by fiberoptic nasal intubation. {h.institution}.</p></div></div></div>
       </section>
       <section class="rv">
+        <h2 class="h-m" style="margin-bottom:20px">Achievements</h2>
+        <div class="rows">
+          {site.achievements.map((c) => <div><span class="when">{c.date}</span><div><h3>{c.name}</h3><p>{c.detail}</p></div></div>)}
+        </div>
+      </section>
+      <section class="rv">
         <h2 class="h-m" style="margin-bottom:20px">Certifications</h2>
         <div class="rows">
           {site.certs.map((c) => <div><span class="when">{c.date ?? c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span><div><h3>{c.name}</h3><p>{c.detail}</p></div></div>)}

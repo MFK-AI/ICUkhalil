@@ -5,7 +5,7 @@ export async function GET() {
   const posts = await getCollection('blog');
   const items = [
     { t: 'Home', k: 'Page', u: 'index.html', d: site.summary },
-    { t: 'Curriculum vitae', k: 'Page', u: 'cv.html', d: 'Career journey, licenses, education and certifications' },
+    { t: 'Curriculum vitae', k: 'Page', u: 'cv.html', d: 'Career journey, licenses, education, achievements and certifications' },
     { t: 'Research and publications', k: 'Page', u: 'research.html', d: 'Six publications on haemodynamics, lung ultrasound, sepsis and nutrition' },
     { t: 'Clinical blog', k: 'Page', u: 'blog.html', d: 'Evidence-based articles for intensive care clinicians' },
     { t: 'Media', k: 'Page', u: 'media.html', d: 'ICU gallery and videos' },

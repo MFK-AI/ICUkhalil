@@ -186,14 +186,6 @@
       "detail": "American Heart Association RQI. Verified competence in Advanced Life Support. Valid to Dec 2026"
     },
     {
-      "name": "Machine Learning in Healthcare: Foundations and Applications",
-      "detail": "Cleveland Clinic, Jan 2026"
-    },
-    {
-      "name": "Artificial Intelligence in Healthcare",
-      "detail": "RCSI University of Medicine and Health Sciences in collaboration with Microsoft, Jan 2026"
-    },
-    {
       "name": "Transplant Procurement Management",
       "detail": "DTI Foundation, Jul 2023"
     },
@@ -295,6 +287,18 @@
       "summary": "",
       "href": "http://www.americanscience.org",
       "cta": "Journal site"
+    }
+  ],
+  "achievements": [
+    {
+      "name": "Machine Learning in Healthcare: Foundations and Applications",
+      "date": "Jan 2026",
+      "detail": "Cleveland Clinic"
+    },
+    {
+      "name": "Artificial Intelligence in Healthcare",
+      "date": "Jan 2026",
+      "detail": "RCSI University of Medicine and Health Sciences in collaboration with Microsoft"
     }
   ]
 }
