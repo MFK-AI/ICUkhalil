@@ -114,6 +114,21 @@ const jsonld = {
   </div>
 </section>
 
+<section class="band ivory" id="achievements">
+  <div class="wrap">
+    <div class="section-head rv"><div><div class="label">Continuing education</div><h2 class="h-l">Achievements and certifications</h2></div><a class="link" href={r('cv.html')}>Full experience</a></div>
+    <div class="ach-grid rv">
+      {site.certs.map((c) => (
+        <div class="ach">
+          <span class="ach-when">{c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span>
+          <h3>{c.name}</h3>
+          <p>{c.detail.replace(/,? ?\w{3} \d{4}$/, '')}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 <section class="band" id="honours">
   <div class="wrap honour">
     <div class="rv">

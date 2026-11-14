@@ -21,53 +21,189 @@
     "linktree": "https://linktr.ee/Dr.Mohamedkhalil"
   },
   "stats": [
-    { "n": "20+", "label": "years in critical care" },
-    { "n": "6", "label": "publications" },
-    { "n": "8", "label": "intensive care posts" },
-    { "n": "3", "label": "countries" }
+    {
+      "n": "20+",
+      "label": "years in critical care"
+    },
+    {
+      "n": "6",
+      "label": "publications"
+    },
+    {
+      "n": "8",
+      "label": "intensive care posts"
+    },
+    {
+      "n": "3",
+      "label": "countries"
+    }
   ],
   "expertise": [
-    { "name": "Mechanical ventilation and ARDS", "note": "Lung-protective strategies, prone positioning, advanced modes" },
-    { "name": "ECMO and ECLS", "note": "VV and VA support, multidisciplinary ECMO rounds" },
-    { "name": "CRRT", "note": "Renal support in haemodynamically unstable patients" },
-    { "name": "Critical care ultrasound", "note": "Lung, cardiac, vascular and abdominal POCUS, instructor" },
-    { "name": "Haemodynamic management", "note": "PiCCO, invasive monitoring, fluid responsiveness" },
-    { "name": "Difficult airway management", "note": "Fiberoptic and emergency airway" },
-    { "name": "Critical care echocardiography", "note": "Bedside cardiac assessment" },
-    { "name": "Rapid response and resuscitation", "note": "BLS, ACLS, ATLS and ABLS certified" },
-    { "name": "Multidisciplinary leadership", "note": "Rounds, protocols and quality improvement" },
-    { "name": "Transplant procurement", "note": "DTI Foundation diploma" }
+    {
+      "name": "Mechanical ventilation and ARDS",
+      "note": "Lung-protective strategies, prone positioning, advanced modes"
+    },
+    {
+      "name": "ECMO and ECLS",
+      "note": "VV and VA support, multidisciplinary ECMO rounds"
+    },
+    {
+      "name": "CRRT",
+      "note": "Renal support in haemodynamically unstable patients"
+    },
+    {
+      "name": "Critical care ultrasound",
+      "note": "Lung, cardiac, vascular and abdominal POCUS, instructor"
+    },
+    {
+      "name": "Haemodynamic management",
+      "note": "PiCCO, invasive monitoring, fluid responsiveness"
+    },
+    {
+      "name": "Difficult airway management",
+      "note": "Fiberoptic and emergency airway"
+    },
+    {
+      "name": "Critical care echocardiography",
+      "note": "Bedside cardiac assessment"
+    },
+    {
+      "name": "Rapid response and resuscitation",
+      "note": "BLS, ACLS, ATLS and ABLS certified"
+    },
+    {
+      "name": "Multidisciplinary leadership",
+      "note": "Rounds, protocols and quality improvement"
+    },
+    {
+      "name": "Transplant procurement",
+      "note": "DTI Foundation diploma"
+    }
   ],
   "licenses": [
-    { "body": "DHA", "name": "Dubai Health Authority", "status": "Specialist, Critical Care. Active license, valid to Apr 2027.", "active": true },
-    { "body": "MOH", "name": "Ministry of Health UAE", "status": "Specialist, Critical Care. Evaluation valid to Dec 2029. Licensed Dec 2024 to Dec 2025.", "active": false },
-    { "body": "DOH", "name": "Department of Health Abu Dhabi", "status": "DataFlow verification active. License in process.", "active": false },
-    { "body": "SCFHS", "name": "Saudi Commission for Health Specialties", "status": "Eligible. Registered Oct 2011. License expired.", "active": false }
+    {
+      "body": "DHA",
+      "name": "Dubai Health Authority",
+      "status": "Specialist, Critical Care. Active license, valid to Apr 2027.",
+      "active": true
+    },
+    {
+      "body": "MOH",
+      "name": "Ministry of Health UAE",
+      "status": "Specialist, Critical Care. Evaluation valid to Dec 2029. Licensed Dec 2024 to Dec 2025.",
+      "active": false
+    },
+    {
+      "body": "DOH",
+      "name": "Department of Health Abu Dhabi",
+      "status": "DataFlow verification active. License in process.",
+      "active": false
+    },
+    {
+      "body": "SCFHS",
+      "name": "Saudi Commission for Health Specialties",
+      "status": "Eligible. Registered Oct 2011. License expired.",
+      "active": false
+    }
   ],
   "jobs": [
-    { "dates": "Apr 2026 to present", "role": "Senior Critical Care Intensivist", "place": "American Hospital Dubai", "city": "Dubai, UAE", "current": true },
-    { "dates": "Dec 2024 to Aug 2025", "role": "Senior Critical Care Intensivist", "place": "Sheikh Khalifa Hospital Fujairah, SEHA", "city": "Fujairah, UAE" },
-    { "dates": "Mar 2022 to Jul 2024", "role": "Senior Critical Care Intensivist", "place": "Al Qassimi Hospital, Emirates Health Services", "city": "Sharjah, UAE" },
-    { "dates": "Sep 2017 to Feb 2022", "role": "Critical Care Specialist", "place": "Security Forces Hospital", "city": "Dammam, Saudi Arabia" },
-    { "dates": "Aug 2013 to Jun 2017", "role": "Critical Care Specialist", "place": "King Fahad Military Medical Complex", "city": "Dhahran, Saudi Arabia" },
-    { "dates": "Apr 2011 to Jun 2013", "role": "Critical Care Specialist", "place": "Erfan and Bagedo General Hospital", "city": "Jeddah, Saudi Arabia" },
-    { "dates": "Jun 2006 to Apr 2011", "role": "Critical Care Specialist", "place": "Alexandria Cardiac Center", "city": "Alexandria, Egypt" },
-    { "dates": "Nov 2005 to Jan 2014", "role": "Critical Care Specialist", "place": "Alexandria Main University Hospital", "city": "Alexandria, Egypt" }
+    {
+      "dates": "Apr 2026 to present",
+      "role": "Senior Critical Care Intensivist",
+      "place": "American Hospital Dubai",
+      "city": "Dubai, UAE",
+      "current": true
+    },
+    {
+      "dates": "Dec 2024 to Aug 2025",
+      "role": "Senior Critical Care Intensivist",
+      "place": "Sheikh Khalifa Hospital Fujairah, SEHA",
+      "city": "Fujairah, UAE"
+    },
+    {
+      "dates": "Mar 2022 to Jul 2024",
+      "role": "Senior Critical Care Intensivist",
+      "place": "Al Qassimi Hospital, Emirates Health Services",
+      "city": "Sharjah, UAE"
+    },
+    {
+      "dates": "Sep 2017 to Feb 2022",
+      "role": "Critical Care Specialist",
+      "place": "Security Forces Hospital",
+      "city": "Dammam, Saudi Arabia"
+    },
+    {
+      "dates": "Aug 2013 to Jun 2017",
+      "role": "Critical Care Specialist",
+      "place": "King Fahad Military Medical Complex",
+      "city": "Dhahran, Saudi Arabia"
+    },
+    {
+      "dates": "Apr 2011 to Jun 2013",
+      "role": "Critical Care Specialist",
+      "place": "Erfan and Bagedo General Hospital",
+      "city": "Jeddah, Saudi Arabia"
+    },
+    {
+      "dates": "Jun 2006 to Apr 2011",
+      "role": "Critical Care Specialist",
+      "place": "Alexandria Cardiac Center",
+      "city": "Alexandria, Egypt"
+    },
+    {
+      "dates": "Nov 2005 to Jan 2014",
+      "role": "Critical Care Specialist",
+      "place": "Alexandria Main University Hospital",
+      "city": "Alexandria, Egypt"
+    }
   ],
   "education": [
-    { "dates": "2019 to present", "degree": "MD, Critical Care Medicine (final stage)", "school": "Faculty of Medicine, Cairo University" },
-    { "dates": "2006 to 2010", "degree": "Master, Critical Care Medicine", "school": "Faculty of Medicine, Alexandria University" },
-    { "dates": "1996 to 2002", "degree": "MBBCh, Medicine and Surgery", "school": "Faculty of Medicine, Alexandria University" }
+    {
+      "dates": "2019 to present",
+      "degree": "MD, Critical Care Medicine (final stage)",
+      "school": "Faculty of Medicine, Cairo University"
+    },
+    {
+      "dates": "2006 to 2010",
+      "degree": "Master, Critical Care Medicine",
+      "school": "Faculty of Medicine, Alexandria University"
+    },
+    {
+      "dates": "1996 to 2002",
+      "degree": "MBBCh, Medicine and Surgery",
+      "school": "Faculty of Medicine, Alexandria University"
+    }
   ],
   "certs": [
-    { "name": "Machine Learning in Healthcare: Foundations and Applications", "detail": "Cleveland Clinic, Jan 2026" },
-    { "name": "Artificial Intelligence in Healthcare", "detail": "RCSI University with Microsoft, Jan 2026" },
-    { "name": "Transplant Procurement Management", "detail": "DTI Foundation, Jul 2023" },
-    { "name": "BLS and ACLS", "detail": "Cardiopulmonary resuscitation" },
-    { "name": "ATLS", "detail": "Advanced Trauma Life Support" },
-    { "name": "ABLS", "detail": "Advanced Burn Life Support" }
+    {
+      "name": "Machine Learning in Healthcare: Foundations and Applications",
+      "detail": "Cleveland Clinic, Jan 2026"
+    },
+    {
+      "name": "Artificial Intelligence in Healthcare",
+      "detail": "RCSI University of Medicine and Health Sciences in collaboration with Microsoft, Jan 2026"
+    },
+    {
+      "name": "Transplant Procurement Management",
+      "detail": "DTI Foundation, Jul 2023"
+    },
+    {
+      "name": "BLS and ACLS",
+      "detail": "Cardiopulmonary resuscitation"
+    },
+    {
+      "name": "ATLS",
+      "detail": "Advanced Trauma Life Support"
+    },
+    {
+      "name": "ABLS",
+      "detail": "Advanced Burn Life Support"
+    }
   ],
-  "languages": ["Arabic, native", "English, full professional"],
+  "languages": [
+    "Arabic, native",
+    "English, full professional"
+  ],
   "honour": {
     "title": "Letter of Appreciation",
     "date": "22 July 2015",
@@ -77,16 +213,82 @@
     "summary": "In recognition of the effort to save the life of a polytrauma patient with severe maxillofacial fractures and a bleeding upper airway that compromised breathing. Dr. Khalil maintained situational awareness and secured the airway by fiberoptic nasal intubation.",
     "quote": "Once again we appreciated your excellent decision at the right time.",
     "signatories": [
-      { "name": "Dr. Khaled Sewify", "role": "Head of Adult Intensive Care Unit" },
-      { "name": "Dr. Yasir Abdelhadi", "role": "Acting Director of Surgery" }
+      {
+        "name": "Dr. Khaled Sewify",
+        "role": "Head of Adult Intensive Care Unit"
+      },
+      {
+        "name": "Dr. Yasir Abdelhadi",
+        "role": "Acting Director of Surgery"
+      }
     ]
   },
   "publications": [
-    { "year": "2026", "type": "journal", "topic": "haemo", "kind": "Journal article", "title": "Comparative performance of six bedside dynamic tests for predicting fluid responsiveness in mechanically ventilated adults with shock: a prospective single-center diagnostic accuracy study", "venue": "Journal of Emergency and Critical Care Medicine, 2026;10:8", "summary": "Six dynamic tests in 40 ventilated adults with shock, against a PiCCO-derived cardiac index response to a 500 mL fluid challenge. Cairo University.", "href": "https://doi.org/10.21037/jeccm-2026-0015", "cta": "Read paper" },
-    { "year": "2025", "type": "journal", "topic": "us", "kind": "Journal article", "title": "Comparative analysis of lung ultrasound, computed tomography, and X-ray in the diagnosis of common pathologies among critically ill mechanically ventilated patients: a prospective observational study", "venue": "Indian Journal of Critical Care Medicine, 2025;29(10):807-814", "summary": "110 ventilated patients with CT thorax as the reference standard.", "href": "https://doi.org/10.5005/jp-journals-10071-25061", "cta": "Read paper" },
-    { "year": "2023", "type": "conf", "topic": "haemo", "kind": "ESICM LIVES 2023, Milan", "title": "Comparison of different dynamic tools in prediction of fluid responsiveness in shock", "venue": "Intensive Care Medicine Experimental, 2023;11(Suppl 1):000660", "summary": "Presented at the 36th Annual Congress of the European Society of Intensive Care Medicine.", "href": "https://doi.org/10.1186/s40635-023-00546-y", "cta": "Read abstract" },
-    { "year": "2019", "type": "conf", "topic": "sepsis", "kind": "ESICM LIVES 2019", "title": "Role of presepsin in diagnosis and prediction of mortality in ICU patients with infection", "venue": "Intensive Care Medicine Experimental, 2019;7(Suppl 3):55", "summary": "", "href": "https://doi.org/10.1186/s40635-019-0265-y", "cta": "Read abstract" },
-    { "year": "2017", "type": "journal", "topic": "nutrition", "kind": "Journal article", "title": "Should probiotics be routinely used in critically ill patients?", "venue": "BAOJ Nutrition, 2017;3:043", "summary": "", "href": "https://www.researchgate.net/publication/321474762", "cta": "Read paper" },
-    { "year": "2011", "type": "journal", "topic": "sepsis", "kind": "Journal article", "title": "Effect of simvastatin on early sepsis in critically ill patients", "venue": "Journal of American Science, 2011;7(12)", "summary": "", "href": "http://www.americanscience.org", "cta": "Journal site" }
+    {
+      "year": "2026",
+      "type": "journal",
+      "topic": "haemo",
+      "kind": "Journal article",
+      "title": "Comparative performance of six bedside dynamic tests for predicting fluid responsiveness in mechanically ventilated adults with shock: a prospective single-center diagnostic accuracy study",
+      "venue": "Journal of Emergency and Critical Care Medicine, 2026;10:8",
+      "summary": "Six dynamic tests in 40 ventilated adults with shock, against a PiCCO-derived cardiac index response to a 500 mL fluid challenge. Cairo University.",
+      "href": "https://doi.org/10.21037/jeccm-2026-0015",
+      "cta": "Read paper"
+    },
+    {
+      "year": "2025",
+      "type": "journal",
+      "topic": "us",
+      "kind": "Journal article",
+      "title": "Comparative analysis of lung ultrasound, computed tomography, and X-ray in the diagnosis of common pathologies among critically ill mechanically ventilated patients: a prospective observational study",
+      "venue": "Indian Journal of Critical Care Medicine, 2025;29(10):807-814",
+      "summary": "110 ventilated patients with CT thorax as the reference standard.",
+      "href": "https://doi.org/10.5005/jp-journals-10071-25061",
+      "cta": "Read paper"
+    },
+    {
+      "year": "2023",
+      "type": "conf",
+      "topic": "haemo",
+      "kind": "ESICM LIVES 2023, Milan",
+      "title": "Comparison of different dynamic tools in prediction of fluid responsiveness in shock",
+      "venue": "Intensive Care Medicine Experimental, 2023;11(Suppl 1):000660",
+      "summary": "Presented at the 36th Annual Congress of the European Society of Intensive Care Medicine.",
+      "href": "https://doi.org/10.1186/s40635-023-00546-y",
+      "cta": "Read abstract"
+    },
+    {
+      "year": "2019",
+      "type": "conf",
+      "topic": "sepsis",
+      "kind": "ESICM LIVES 2019",
+      "title": "Role of presepsin in diagnosis and prediction of mortality in ICU patients with infection",
+      "venue": "Intensive Care Medicine Experimental, 2019;7(Suppl 3):55",
+      "summary": "",
+      "href": "https://doi.org/10.1186/s40635-019-0265-y",
+      "cta": "Read abstract"
+    },
+    {
+      "year": "2017",
+      "type": "journal",
+      "topic": "nutrition",
+      "kind": "Journal article",
+      "title": "Should probiotics be routinely used in critically ill patients?",
+      "venue": "BAOJ Nutrition, 2017;3:043",
+      "summary": "",
+      "href": "https://www.researchgate.net/publication/321474762",
+      "cta": "Read paper"
+    },
+    {
+      "year": "2011",
+      "type": "journal",
+      "topic": "sepsis",
+      "kind": "Journal article",
+      "title": "Effect of simvastatin on early sepsis in critically ill patients",
+      "venue": "Journal of American Science, 2011;7(12)",
+      "summary": "",
+      "href": "http://www.americanscience.org",
+      "cta": "Journal site"
+    }
   ]
 }
