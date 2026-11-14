@@ -23,3 +23,8 @@
   for = "/media/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
