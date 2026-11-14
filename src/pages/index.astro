@@ -120,9 +120,9 @@ const jsonld = {
     <div class="ach-grid rv">
       {site.certs.map((c) => (
         <div class="ach">
-          <span class="ach-when">{c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span>
+          <span class="ach-when">{c.date ?? c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span>
           <h3>{c.name}</h3>
-          <p>{c.detail.replace(/,? ?\w{3} \d{4}$/, '')}</p>
+          <p>{c.date ? c.detail : c.detail.replace(/,? ?\w{3} \d{4}$/, '')}</p>
         </div>
       ))}
     </div>

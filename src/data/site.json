@@ -176,6 +176,16 @@
   ],
   "certs": [
     {
+      "name": "BLS Provider",
+      "date": "Jul 2026",
+      "detail": "American Heart Association RQI. Verified competence in high-quality CPR. Valid to Dec 2026"
+    },
+    {
+      "name": "ACLS Provider",
+      "date": "Jul 2026",
+      "detail": "American Heart Association RQI. Verified competence in Advanced Life Support. Valid to Dec 2026"
+    },
+    {
       "name": "Machine Learning in Healthcare: Foundations and Applications",
       "detail": "Cleveland Clinic, Jan 2026"
     },
@@ -186,10 +196,6 @@
     {
       "name": "Transplant Procurement Management",
       "detail": "DTI Foundation, Jul 2023"
-    },
-    {
-      "name": "BLS and ACLS",
-      "detail": "Cardiopulmonary resuscitation"
     },
     {
       "name": "ATLS",

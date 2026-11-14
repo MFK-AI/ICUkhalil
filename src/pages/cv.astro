@@ -76,7 +76,7 @@ const h = site.honour;
       <section class="rv">
         <h2 class="h-m" style="margin-bottom:20px">Certifications</h2>
         <div class="rows">
-          {site.certs.map((c) => <div><span class="when">{c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span><div><h3>{c.name}</h3><p>{c.detail}</p></div></div>)}
+          {site.certs.map((c) => <div><span class="when">{c.date ?? c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span><div><h3>{c.name}</h3><p>{c.detail}</p></div></div>)}
         </div>
       </section>
       <section class="rv">
