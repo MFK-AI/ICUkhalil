@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { makeRel } from '../lib/rel';
+const r = makeRel(Astro.url);
+const posts = (await getCollection('blog')).sort((a, b) => +b.data.published - +a.data.published);
+---
+<Base title="Clinical blog" description="Evidence-based articles for intensive care clinicians by Dr. Mohamed Khalil: ARDS management, ECMO configuration and lung ultrasound." current="blog">
+<section class="band" style="padding-bottom:40px">
+  <div class="wrap" style="display:grid;gap:14px">
+    <div class="label">Knowledge and insights</div>
+    <h1 class="h-l">Clinical blog</h1>
+    <p class="lede">Evidence-based reviews for clinicians, written against the current guidelines and fully referenced.</p>
+  </div>
+</section>
+<section class="wrap" style="padding-bottom:96px">
+  <div class="grid-auto">
+    {posts.map((p) => (
+      <a class="card paper rv" href={r(`blog/${p.id}.html`)}>
+        <span class="label">{p.data.category}</span>
+        <span class="ttl">{p.data.title}</span>
+        <span class="sub" style="font-size:15px;line-height:1.6">{p.data.description}</span>
+        <span class="sub">{p.data.published.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+      </a>
+    ))}
+  </div>
+</section>
+</Base>

@@ -1,0 +1,121 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { makeRel } from '../../lib/rel';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((p) => ({ params: { slug: p.id }, props: { post: p, others: posts.filter((o) => o.id !== p.id) } }));
+}
+const { post, others } = Astro.props;
+const { Content } = await render(post);
+const r = makeRel(Astro.url);
+const d = post.data;
+const raw = post.body || '';
+const heads = [...raw.matchAll(/<h2 id="([^"]+)"[^>]*>(.*?)<\/h2>/g)].map((m) => ({ id: m[1], t: m[2] }));
+const words = (raw + d.references).replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+const mins = Math.max(1, Math.round(words / 220));
+const date = d.published.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const url = `https://icukhalil.com/blog/${post.id}.html`;
+const jsonld = {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.title, description: d.description, url,
+  datePublished: d.published.toISOString().slice(0, 10), dateModified: d.published.toISOString().slice(0, 10), inLanguage: 'en', keywords: d.keywords,
+  author: { '@type': 'Person', name: 'Dr. Mohamed Khalil', jobTitle: 'Senior Critical Care Intensivist', url: 'https://icukhalil.com/' },
+  publisher: { '@type': 'Person', name: 'Dr. Mohamed Khalil', url: 'https://icukhalil.com/' },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Clinician' }, mainEntityOfPage: url,
+};
+---
+<Base title={d.title} description={d.description} jsonld={jsonld} ogType="article" current="blog">
+<div class="progress" aria-hidden="true"></div>
+<section class="hero" style="background:radial-gradient(ellipse at 80% 20%, rgba(217,180,90,.14), transparent 55%), var(--ink)">
+  <div class="wrap" style="max-width:920px;padding-block:clamp(56px,8vw,88px);display:grid;gap:20px">
+    <div class="label">{d.category}</div>
+    <h1 class="h-l">{d.title}</h1>
+    <p class="lede" style="max-width:760px">{d.standfirst}</p>
+    <div class="art-meta">
+      <span><b>Dr. Mohamed Khalil</b>, Senior Critical Care Intensivist</span>
+      <span>Published {date}</span><span>{mins} min read</span><span>Evidence reviewed to {d.reviewed}</span>
+    </div>
+  </div>
+</section>
+
+<div class="reading">
+  <div class="art-layout">
+    <aside class="art-toc" aria-label="Contents">
+      <div class="label">In this article</div>
+      <ol>{heads.map((x) => <li><a href={`#${x.id}`}>{x.t}</a></li>)}<li><a href="#references">References</a></li></ol>
+    </aside>
+    <div>
+      <details class="toc-mobile"><summary>In this article</summary><ol>{heads.map((x) => <li><a href={`#${x.id}`}>{x.t}</a></li>)}<li><a href="#references">References</a></li></ol></details>
+      <article class="prose">
+        <Content />
+        <h2 id="references">References</h2>
+        <ol class="refs" set:html={d.references}></ol>
+        <div class="notes">
+          <p><strong>Purpose.</strong> Continuing education for healthcare professionals. It is not medical advice for individual patients and does not replace institutional protocols or the full guideline documents.</p>
+          <p><strong>Evidence.</strong> Recommendations are reported with the strength and certainty given by the issuing society. Sections labelled as the author's synthesis are expert opinion.</p>
+          <p><strong>Disclosure.</strong> {d.disclosure} The views expressed are the author's own and do not represent any employer.</p>
+          <p><strong>Next review.</strong> {d.nextReview}, or sooner if a major guideline is published.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <section class="wrap more">
+    <h2 class="h-m" style="text-align:center;margin-bottom:24px">More from the clinical blog</h2>
+    <div class="grid-auto" style="max-width:900px;margin:0 auto">
+      {others.map((o) => <a class="card" style="background:#fff;border-color:rgba(122,92,18,.2);color:var(--ink-text)" href={r(`blog/${o.id}.html`)}><span class="label" style="color:var(--deep)">{o.data.category}</span><span class="ttl">{o.data.title}</span></a>)}
+    </div>
+  </section>
+</div>
+
+<style is:global>
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--bright); z-index: 60; }
+  .art-meta { display: flex; flex-wrap: wrap; gap: 8px 26px; padding-top: 20px; margin-top: 8px; border-top: 1px solid var(--line); font-size: 15px; color: var(--muted); }
+  .art-meta b { color: var(--text); }
+  .reading { background: var(--ivory); color: var(--ink-text); }
+  .art-layout { max-width: 1180px; margin: 0 auto; padding: 56px 32px 40px; display: grid; grid-template-columns: 240px minmax(0, 760px); gap: 64px; justify-content: center; }
+  .art-toc { position: sticky; top: 96px; align-self: start; font-size: 15px; }
+  .art-toc .label, .toc-mobile summary { color: var(--deep); }
+  .art-toc ol { list-style: none; margin: 12px 0 0; padding: 0; border-left: 2px solid rgba(122,92,18,.2); }
+  .art-toc a { display: block; padding: 7px 0 7px 14px; margin-left: -2px; border-left: 2px solid transparent; color: var(--ink-soft); text-decoration: none; line-height: 1.4; }
+  .art-toc a:hover, .art-toc a.active { color: var(--ink-text); border-left-color: var(--gold); }
+  .toc-mobile { display: none; margin-bottom: 24px; background: #fff; border: 1px solid rgba(122,92,18,.22); }
+  .toc-mobile summary { cursor: pointer; padding: 14px 18px; font: 600 14px var(--label); letter-spacing: 2px; text-transform: uppercase; }
+  .toc-mobile ol { margin: 0 18px 14px 36px; }
+  .prose { font-size: 18px; line-height: 1.78; }
+  .prose a { color: #7A5C12; }
+  .prose h2 { font-size: clamp(26px, 3vw, 32px); color: #111622; margin: 52px 0 16px; scroll-margin-top: 90px; }
+  .prose h3 { font: 700 19px/1.35 var(--sans); color: #111622; margin: 30px 0 10px; }
+  .prose p { margin: 0 0 18px; }
+  .prose ul, .prose ol { margin: 0 0 20px 24px; padding: 0; }
+  .prose li { margin-bottom: 8px; }
+  .prose sup a { text-decoration: none; font-weight: 700; font-size: .75em; padding: 0 1px; }
+  .keypoints { background: #fff; border-top: 4px solid var(--gold); padding: 28px 30px 16px; box-shadow: 0 14px 40px rgba(27,35,56,.08); }
+  .keypoints h2 { margin: 0 0 12px !important; font-size: 24px !important; }
+  .callout { background: rgba(217,180,90,.14); border-left: 4px solid #A8862A; padding: 18px 22px; margin: 24px 0; }
+  .callout strong { display: block; font: 600 14px var(--label); letter-spacing: 2px; text-transform: uppercase; color: var(--deep); margin-bottom: 4px; }
+  .tablewrap { overflow-x: auto; margin: 22px 0 28px; background: #fff; border: 1px solid rgba(122,92,18,.22); }
+  .tablewrap table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 15px; line-height: 1.5; }
+  .tablewrap th, .tablewrap td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(122,92,18,.22); vertical-align: top; }
+  .tablewrap th { background: #111622; color: var(--ivory); font: 600 14px var(--label); letter-spacing: 1px; text-transform: uppercase; }
+  .refs { font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+  .refs li { word-break: break-word; }
+  .notes { margin-top: 40px; padding: 22px 24px; background: var(--ivory-2); font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+  .notes p { margin-bottom: 10px; }
+  .more { padding-block: 24px 80px; }
+  @media (max-width: 980px) { .art-layout { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 32px; } .art-toc { display: none; } .toc-mobile { display: block; } }
+  @media (max-width: 600px) { .prose { font-size: 17px; } .art-layout { padding-inline: 20px; } .keypoints { padding: 22px 20px 10px; } }
+</style>
+<script is:inline>
+{
+  const bar = document.querySelector('.progress');
+  const on = () => { const h = document.documentElement; const m = h.scrollHeight - h.clientHeight; bar.style.width = (m > 0 ? (h.scrollTop / m) * 100 : 0) + '%'; };
+  document.addEventListener('scroll', on, { passive: true }); on();
+  const links = document.querySelectorAll('.art-toc a');
+  if ('IntersectionObserver' in window) {
+    const spy = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((l) => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-20% 0px -70% 0px' });
+    document.querySelectorAll('.prose h2[id]').forEach((h) => spy.observe(h));
+  }
+}
+</script>
+</Base>

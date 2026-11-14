@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { makeRel } from '../lib/rel';
+const r = makeRel(Astro.url);
+---
+<Base title="Message sent" description="Thank you for your message." current="contact">
+<section class="band"><div class="wrap" style="display:grid;gap:18px;justify-items:start">
+  <div class="label">Thank you</div><h1 class="h-l">Your message has been sent.</h1>
+  <p class="lede">Dr. Khalil will reply by email.</p><a class="btn btn-line" href={r('index.html')}>Back to home</a>
+</div></section>
+</Base>

@@ -1,0 +1,27 @@
+# Browser editor for blog articles. Sign in with GitHub at icukhalil.com/admin
+backend:
+  name: github
+  repo: MFK-AI/ICUkhalil
+  branch: main
+media_folder: public/media/uploads
+public_folder: /media/uploads
+collections:
+  - name: blog
+    label: Blog articles
+    label_singular: Article
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Search description (one sentence), widget: text }
+      - { name: standfirst, label: Opening summary, widget: text }
+      - { name: category, label: Category, widget: select, options: ["Mechanical Ventilation", "ECMO & ECLS", "POCUS", "Sepsis", "Haemodynamics", "Guidelines"] }
+      - { name: published, label: Publish date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { name: reviewed, label: Evidence reviewed to, widget: string, default: "Month Year" }
+      - { name: nextReview, label: Next review, widget: string }
+      - { name: keywords, label: Keywords, widget: string, required: false }
+      - { name: disclosure, label: Disclosure, widget: string, default: "The author has no financial conflicts of interest to declare." }
+      - { name: references, label: References (one per line as list items), widget: text }
+      - { name: body, label: Article, widget: markdown }

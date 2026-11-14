@@ -1,0 +1,122 @@
+[
+ {
+  "src": "media/gallery/g02.webp",
+  "thumb": "media/gallery/g02-sm.webp",
+  "alt": "ICU team responding to an emergency call",
+  "cat": "clinical",
+  "w": 393,
+  "h": 510
+ },
+ {
+  "src": "media/gallery/g03.webp",
+  "thumb": "media/gallery/g03-sm.webp",
+  "alt": "Team transferring a patient on a stretcher",
+  "cat": "clinical",
+  "w": 626,
+  "h": 393
+ },
+ {
+  "src": "media/gallery/g06.webp",
+  "thumb": "media/gallery/g06-sm.webp",
+  "alt": "Bedside round in the intensive care unit",
+  "cat": "clinical",
+  "w": 672,
+  "h": 1195
+ },
+ {
+  "src": "media/gallery/g07.webp",
+  "thumb": "media/gallery/g07-sm.webp",
+  "alt": "Rapid response team on the way to a call",
+  "cat": "clinical",
+  "w": 408,
+  "h": 728
+ },
+ {
+  "src": "media/gallery/g14.webp",
+  "thumb": "media/gallery/g14-sm.webp",
+  "alt": "Nurse adjusting an infusion for a ventilated patient",
+  "cat": "clinical",
+  "w": 300,
+  "h": 371
+ },
+ {
+  "src": "media/gallery/g17.webp",
+  "thumb": "media/gallery/g17-sm.webp",
+  "alt": "Nurse caring for a patient on oxygen therapy",
+  "cat": "clinical",
+  "w": 1000,
+  "h": 667
+ },
+ {
+  "src": "media/gallery/g16.webp",
+  "thumb": "media/gallery/g16-sm.webp",
+  "alt": "Arterial and venous lines on a patient's arm",
+  "cat": "clinical",
+  "w": 736,
+  "h": 736
+ },
+ {
+  "src": "media/gallery/g12.webp",
+  "thumb": "media/gallery/g12-sm.webp",
+  "alt": "Renal replacement and infusion pumps at the bedside",
+  "cat": "technology",
+  "w": 736,
+  "h": 920
+ },
+ {
+  "src": "media/gallery/g01.webp",
+  "thumb": "media/gallery/g01-sm.webp",
+  "alt": "Heart with an ECG trace",
+  "cat": "technology",
+  "w": 1200,
+  "h": 800
+ },
+ {
+  "src": "media/gallery/g04.webp",
+  "thumb": "media/gallery/g04-sm.webp",
+  "alt": "Holographic heart above a clinician's hand",
+  "cat": "technology",
+  "w": 700,
+  "h": 484
+ },
+ {
+  "src": "media/gallery/g05.webp",
+  "thumb": "media/gallery/g05-sm.webp",
+  "alt": "Heart and stethoscope",
+  "cat": "technology",
+  "w": 626,
+  "h": 417
+ },
+ {
+  "src": "media/gallery/g09.webp",
+  "thumb": "media/gallery/g09-sm.webp",
+  "alt": "Holographic lungs held by a physician",
+  "cat": "technology",
+  "w": 736,
+  "h": 414
+ },
+ {
+  "src": "media/gallery/g10.webp",
+  "thumb": "media/gallery/g10-sm.webp",
+  "alt": "Digital whole-body imaging display",
+  "cat": "technology",
+  "w": 736,
+  "h": 1308
+ },
+ {
+  "src": "media/gallery/g11.webp",
+  "thumb": "media/gallery/g11-sm.webp",
+  "alt": "A modern intensive care unit",
+  "cat": "technology",
+  "w": 736,
+  "h": 736
+ },
+ {
+  "src": "media/gallery/g13.webp",
+  "thumb": "media/gallery/g13-sm.webp",
+  "alt": "Digital visualisation of a monitored ICU patient",
+  "cat": "technology",
+  "w": 736,
+  "h": 736
+ }
+]

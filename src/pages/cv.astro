@@ -1,0 +1,95 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import { makeRel } from '../lib/rel';
+const r = makeRel(Astro.url);
+const h = site.honour;
+---
+<Base title="Curriculum vitae" description="CV of Dr. Mohamed Khalil: eight intensive care posts across Egypt, Saudi Arabia and the UAE, licenses and registrations, education and certifications." current="cv">
+
+<section class="band" style="padding-bottom:40px">
+  <div class="wrap section-head" style="margin-bottom:0">
+    <div>
+      <div class="label">Curriculum vitae</div>
+      <h1 class="h-l">20+ years in intensive care</h1>
+      <p class="lede">Egypt, Saudi Arabia and the UAE. Updated November 2026.</p>
+    </div>
+    <div class="hero-actions no-print">
+      <a class="btn btn-gold" href={r('cv/Dr-Mohamed-Khalil-CV.pdf')} download>Download PDF</a>
+      <button class="btn btn-line" type="button" id="print-cv">Print</button>
+    </div>
+  </div>
+</section>
+
+<section class="band ink-3" aria-labelledby="journey">
+  <div class="wrap" style="max-width:1180px">
+    <div class="center-head rv">
+      <div class="label">20+ years of excellence</div>
+      <h2 class="h-l" id="journey">Career journey</h2>
+      <p class="lede">From Alexandria to Dubai, eight intensive care posts across three countries.</p>
+    </div>
+    <ol class="tl">
+      {site.jobs.map((j) => (
+        <li class="rv">
+          <span class={`dot${j.current ? ' now' : ''}`} aria-hidden="true"></span>
+          <div class="cell">
+            <div class="box">
+              {j.current && <span class="badge">CURRENT</span>}
+              <div class="when">{j.dates}</div>
+              <h3 class="role">{j.role}</h3>
+              <div class="place">{j.place}</div>
+              <div class="city">{j.city}</div>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap cv-cols">
+    <aside class="rv">
+      <div>
+        <h2>Licenses and registrations</h2>
+        {site.licenses.map((l) => <div class={`mini-lic${l.active ? ' active' : ''}`}><b>{l.body}, {l.name}</b><span>{l.status}</span></div>)}
+      </div>
+      <div><h2>Languages</h2>{site.languages.map((x) => <p>{x}</p>)}</div>
+      <div>
+        <h2>Contact</h2>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p>WhatsApp {site.whatsapp}</p>
+        <p>{site.location}</p>
+      </div>
+    </aside>
+    <div style="display:grid;gap:56px">
+      <section class="rv">
+        <h2 class="h-m" style="margin-bottom:20px">Education</h2>
+        <div class="rows">
+          {site.education.map((e) => <div><span class="when">{e.dates}</span><div><h3>{e.degree}</h3><p>{e.school}</p></div></div>)}
+        </div>
+      </section>
+      <section class="rv">
+        <h2 class="h-m" style="margin-bottom:20px">Honours</h2>
+        <div class="rows"><div><span class="when">Jul 2015</span><div><h3>{h.title}</h3><p>Emergency airway save by fiberoptic nasal intubation. {h.institution}.</p></div></div></div>
+      </section>
+      <section class="rv">
+        <h2 class="h-m" style="margin-bottom:20px">Certifications</h2>
+        <div class="rows">
+          {site.certs.map((c) => <div><span class="when">{c.detail.match(/\w{3} \d{4}/)?.[0] ?? 'Certified'}</span><div><h3>{c.name}</h3><p>{c.detail}</p></div></div>)}
+        </div>
+      </section>
+      <section class="rv">
+        <h2 class="h-m" style="margin-bottom:20px">Publications</h2>
+        <div class="rows">
+          {site.publications.map((p) => <div><span class="when">{p.year}</span><div><h3 style="font-size:18px">{p.title}</h3><p>{p.venue}</p></div></div>)}
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById('print-cv').addEventListener('click', () => { try { window.print(); } catch (e) {} });
+</script>
+</Base>

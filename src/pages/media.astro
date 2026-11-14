@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import gallery from '../data/gallery.json';
+import { makeRel } from '../lib/rel';
+const r = makeRel(Astro.url);
+---
+<Base title="Media" description="Life inside the intensive care unit: gallery and videos from Dr. Mohamed Khalil." current="media">
+<section class="band" style="padding-bottom:40px">
+  <div class="wrap" style="display:grid;gap:14px">
+    <div class="label">Visual portfolio</div>
+    <h1 class="h-l">Media</h1>
+    <p class="lede">Life inside the ICU, where technology meets humanity and every second counts.</p>
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom:64px">
+  <div class="videos">
+    <figure class="rv">
+      <video controls preload="none" playsinline poster={r('media/video/icu-story.jpg')} width="1280" height="720">
+        <source src={r('media/video/icu-story.mp4')} type="video/mp4">
+      </video>
+      <figcaption>The ICU story, 60 seconds.</figcaption>
+    </figure>
+    <figure class="rv" style="max-width:360px">
+      <video controls preload="none" playsinline poster={r('media/video/profile-intro.jpg')} width="720" height="1280">
+        <source src={r('media/video/profile-intro.mp4')} type="video/mp4">
+      </video>
+      <figcaption>Personal introduction, 52 seconds.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band ink-3">
+  <div class="wrap">
+    <div class="section-head"><div><div class="label">Gallery</div><h2 class="h-l">Inside the ICU</h2></div>
+      <div class="row" role="group" aria-label="Filter photos" style="display:flex;flex-wrap:wrap;gap:10px">
+        <button class="pill" type="button" data-cat="all" aria-pressed="true">All</button>
+        <button class="pill" type="button" data-cat="clinical" aria-pressed="false">Clinical</button>
+        <button class="pill" type="button" data-cat="technology" aria-pressed="false">Technology</button>
+      </div>
+    </div>
+    <div class="gallery">
+      {gallery.map((g) => (
+        <button type="button" data-cat={g.cat} data-full={r(g.src)} data-alt={g.alt} aria-label={`Open photo: ${g.alt}`}>
+          <img src={r(g.thumb)} alt={g.alt} loading="lazy" width={g.w} height={g.h}>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo">
+  <img id="lb-img" src="" alt="">
+  <div class="bar"><span id="lb-cap" style="color:var(--soft)"></span><button class="icon-btn" type="button" id="lb-close" aria-label="Close photo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"></path></svg></button></div>
+</dialog>
+
+<script is:inline>
+{
+  const lb = document.getElementById('lightbox'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  document.querySelectorAll('.gallery button').forEach((b) => b.addEventListener('click', () => { img.src = b.dataset.full; img.alt = b.dataset.alt; cap.textContent = b.dataset.alt; lb.showModal(); }));
+  document.getElementById('lb-close').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+  document.querySelectorAll('[data-cat].pill').forEach((p) => p.addEventListener('click', () => {
+    document.querySelectorAll('[data-cat].pill').forEach((x) => x.setAttribute('aria-pressed', String(x === p)));
+    document.querySelectorAll('.gallery button').forEach((b) => { b.hidden = !(p.dataset.cat === 'all' || b.dataset.cat === p.dataset.cat); });
+  }));
+}
+</script>
+</Base>

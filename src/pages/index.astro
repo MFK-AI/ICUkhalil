@@ -1,0 +1,182 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import { getCollection } from 'astro:content';
+import { makeRel } from '../lib/rel';
+const r = makeRel(Astro.url);
+const posts = (await getCollection('blog')).sort((a, b) => +b.data.published - +a.data.published);
+const h = site.honour;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': ['Person', 'Physician'],
+  name: site.name, givenName: 'Mohamed', familyName: 'Khalil', honorificPrefix: 'Dr.',
+  jobTitle: site.title, description: site.summary, url: 'https://icukhalil.com/',
+  image: 'https://icukhalil.com/img/portrait.jpg', email: site.email,
+  sameAs: [site.social.linkedin, site.social.facebook, site.social.linktree],
+  worksFor: { '@type': 'Hospital', name: site.employer, address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' } },
+  medicalSpecialty: 'CriticalCare',
+  knowsAbout: site.expertise.map((e) => e.name),
+  knowsLanguage: ['ar', 'en'],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Faculty of Medicine, Alexandria University' },
+    { '@type': 'CollegeOrUniversity', name: 'Faculty of Medicine, Cairo University' },
+  ],
+  address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
+};
+---
+<Base title={site.name} description="Dr. Mohamed Khalil, Senior Critical Care Intensivist at American Hospital Dubai. 20+ years across the UAE, Saudi Arabia and Egypt in ECMO, CRRT, mechanical ventilation and critical care ultrasound." jsonld={jsonld} current="home">
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <div class="label">{site.title} · {site.employer}</div>
+      <h1 class="h-xl gold-name">{site.name}</h1>
+      <p class="lede">{site.summary}</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href={r('cv/Dr-Mohamed-Khalil-CV.pdf')} download>Download CV</a>
+        <a class="btn btn-line" href={r('research.html')}>View research</a>
+        <a class="link" href={r('contact.html')}>Contact</a>
+      </div>
+      <div class="stats">
+        {site.stats.map((s) => <div><b>{s.n}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-visual" id="lungs" role="img" aria-label="Gold particle lungs with a branching bronchial tree, gently breathing">
+        <img src={r('img/lungs.webp')} srcset={`${r('img/lungs-sm.webp')} 700w, ${r('img/lungs.webp')} 1200w`} sizes="(max-width: 900px) 420px, 600px" alt="" width="1200" height="1000" fetchpriority="high">
+      </div>
+      <svg class="ecg" viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 24 H230 L244 24 L254 8 L266 36 L278 2 L290 30 L300 24 H600" fill="none" stroke="#D9B45A" stroke-width="1.4"></path></svg>
+    </div>
+  </div>
+</section>
+
+<section class="band ivory" id="profile">
+  <div class="wrap spread">
+    <img class="rv" src={r('img/portrait.webp')} alt="Portrait of Dr. Mohamed Khalil" width="600" height="600" loading="lazy">
+    <div class="copy rv">
+      <div class="label">Profile</div>
+      <blockquote class="pull">{site.quote}</blockquote>
+      {site.bio.map((p) => <p style="font-size:18px;line-height:1.75;color:var(--ink-soft)">{p}</p>)}
+      <div class="chips">
+        <span class="chip">ECMO and ECLS</span><span class="chip">CRRT</span><span class="chip">Mechanical ventilation</span><span class="chip">Critical care ultrasound</span><span class="chip">Haemodynamics</span>
+      </div>
+      <div><a class="btn btn-line" href={r('cv.html')}>Read the full CV</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="expertise">
+  <div class="wrap">
+    <div class="section-head rv"><div><div class="label">Clinical mastery</div><h2 class="h-l">Areas of expertise</h2></div></div>
+    <div class="expertise rv">
+      {site.expertise.map((e) => <div><h3>{e.name}</h3><p>{e.note}</p></div>)}
+    </div>
+  </div>
+</section>
+
+<section class="band ink-3" id="licenses">
+  <div class="wrap">
+    <div class="section-head rv"><div><div class="label">Practice</div><h2 class="h-l">Licenses and registrations</h2></div><a class="link" href={r('cv.html')}>Full CV</a></div>
+    <div class="grid-auto rv">
+      {site.licenses.map((l) => (
+        <div class={`lic${l.active ? ' active' : ''}`}>
+          <b>{l.body}</b><h3>{l.name}</h3><p>{l.status}</p>
+          <span class="state"><i></i>{l.active ? 'Active license' : 'See status'}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="band" id="honours">
+  <div class="wrap honour">
+    <div class="rv">
+      <div class="label">Recognition</div>
+      <h2 class="h-l" style="margin-top:12px">Honours and <span class="gold-name">commendation</span></h2>
+      <p class="lede" style="margin-top:16px">A formal letter of appreciation for a life-saving airway decision in a critically injured trauma patient.</p>
+      <ul class="facts">
+        <li><span>Date</span>{h.date}</li>
+        <li><span>Institution</span>{h.institution}</li>
+        <li><span>Issued by</span>{h.issuedBy}</li>
+        <li><span>Role</span>{h.role}</li>
+      </ul>
+    </div>
+    <article class="letter" aria-label={`${h.title}, ${h.date}`}>
+      <div class="ribbon" aria-hidden="true"></div>
+      <div class="seal" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#3a2a05" stroke-width="1.6"><circle cx="12" cy="9" r="6"></circle><path d="M8.5 13.5L7 22l5-3 5 3-1.5-8.5"></path></svg></div>
+      <div class="org">King Fahad Military Medical Complex · Dhahran</div>
+      <h3>{h.title}</h3>
+      <div class="date">{h.date}</div>
+      <p style="font-size:15px;color:#3a4152;margin-bottom:14px">To: <b style="color:#111a2e">Dr. Mohamed Fawzy Khalil</b>, {h.role}</p>
+      <p style="line-height:1.75">{h.summary}</p>
+      <blockquote>“{h.quote}”</blockquote>
+      <div class="sign">{h.signatories.map((s) => <div><b>{s.name}</b>{s.role}</div>)}</div>
+    </article>
+  </div>
+</section>
+
+<section class="band ink-3" id="research">
+  <div class="wrap">
+    <div class="section-head rv"><div><div class="label">Academic contributions</div><h2 class="h-l">Selected research</h2></div><a class="link" href={r('research.html')}>All {site.publications.length} publications</a></div>
+    <div class="grid-auto rv">
+      {site.publications.slice(0, 3).map((p) => (
+        <a class="card" href={p.href} rel="noopener">
+          <span class="label">{p.year} · {p.kind}</span>
+          <span class="ttl">{p.title.split(':')[0]}</span>
+          <span class="sub">{p.venue}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="band" id="blog">
+  <div class="wrap">
+    <div class="section-head rv"><div><div class="label">Knowledge and insights</div><h2 class="h-l">Clinical blog</h2></div><a class="link" href={r('blog.html')}>All articles</a></div>
+    <div class="grid-auto rv">
+      {posts.map((p) => (
+        <a class="card paper" href={r(`blog/${p.id}.html`)}>
+          <span class="label">{p.data.category}</span>
+          <span class="ttl">{p.data.title}</span>
+          <span class="sub">{p.data.published.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="band ink-3" id="video">
+  <div class="wrap videos">
+    <div class="rv" style="display:grid;gap:16px;align-content:center">
+      <div class="label">Personal introduction</div>
+      <h2 class="h-l">Meet Dr. Khalil</h2>
+      <p class="lede">His vision, his mission and his commitment to critical care excellence.</p>
+      <div><a class="btn btn-line" href={r('media.html')}>Gallery and videos</a></div>
+    </div>
+    <figure class="rv" style="max-width:380px;justify-self:center">
+      <video controls preload="none" playsinline poster={r('media/video/profile-intro.jpg')} width="720" height="1280">
+        <source src={r('media/video/profile-intro.mp4')} type="video/mp4">
+      </video>
+      <figcaption>Personal introduction, 52 seconds.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band ivory">
+  <div class="wrap section-head" style="margin-bottom:0;align-items:center">
+    <h2 class="h-l" style="max-width:760px">Open to collaborations, speaking and senior ICU roles.</h2>
+    <div class="hero-actions">
+      <a class="btn btn-ink" href={r('contact.html')}>Send a message</a>
+      <a class="btn btn-line" href={r('cv/Dr-Mohamed-Khalil-CV.pdf')} download>Download CV</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { startLungs } from '../scripts/lungs3d';
+  const host = document.getElementById('lungs');
+  const go = () => host && startLungs(host).catch(() => {});
+  if (document.readyState === 'complete') setTimeout(go, 300);
+  else window.addEventListener('load', () => setTimeout(go, 300), { once: true });
+</script>
+</Base>

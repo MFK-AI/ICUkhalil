@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+<Base title="Contact" description="Contact Dr. Mohamed Khalil about career opportunities, research collaboration, speaking engagements and academic partnerships." current="contact">
+<section class="band">
+  <div class="wrap contact">
+    <div style="display:grid;gap:18px">
+      <div class="label">Get in touch</div>
+      <h1 class="h-l">Let's connect</h1>
+      <p class="lede">Hospital recruiters, fellow intensivists and researchers: I welcome professional connections that advance critical care medicine.</p>
+      <div class="ways" style="margin-top:12px">
+        <div><b>Email</b><a href={`mailto:${site.email}`}>{site.email}</a></div>
+        <div><b>WhatsApp</b><a href={site.whatsappLink} rel="noopener">{site.whatsapp}</a></div>
+        <div><b>Current institution</b><span>{site.employer}, {site.employerDetail}</span></div>
+        <div><b>Location</b><span>{site.location}</span></div>
+        <div><b>Follow</b><span><a href={site.social.linkedin} rel="noopener">LinkedIn</a> · <a href={site.social.facebook} rel="noopener">Facebook</a> · <a href={site.social.linktree} rel="noopener">Linktree</a></span></div>
+      </div>
+    </div>
+
+    <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="company" action="thanks.html" id="contact-form">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+      <div class="two">
+        <label>First name<input name="first" required autocomplete="given-name"></label>
+        <label>Last name<input name="last" required autocomplete="family-name"></label>
+      </div>
+      <label>Email address<input type="email" name="email" required autocomplete="email"></label>
+      <label>Subject
+        <select name="subject" required>
+          <option value="">Select a subject</option>
+          <option>Career opportunity</option><option>Research collaboration</option><option>Speaking engagement</option><option>Academic partnership</option><option>General inquiry</option>
+        </select>
+      </label>
+      <label>Message<textarea name="message" required></textarea></label>
+      <p class="note">No patient details, please. This form is not for medical advice or emergencies.</p>
+      <div><button class="btn btn-gold" type="submit">Send message</button></div>
+      <p class="status" id="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+<script is:inline>
+{
+  const f = document.getElementById('contact-form'), s = document.getElementById('form-status');
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!f.reportValidity()) return;
+    s.style.color = ''; s.textContent = 'Sending…';
+    try {
+      const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() });
+      if (!res.ok) throw new Error();
+      f.reset(); s.textContent = 'Thank you. Your message has been sent.';
+    } catch (err) {
+      s.style.color = 'var(--bright)';
+      s.textContent = 'The message could not be sent from here. Please email ' + 'mkhalil.icu@gmail.com' + ' directly.';
+    }
+  });
+}
+</script>
+</Base>

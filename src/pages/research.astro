@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+const topics = [
+  ['all', 'All topics'], ['haemo', 'Haemodynamics'], ['us', 'Lung ultrasound'], ['sepsis', 'Sepsis'], ['nutrition', 'Nutrition'],
+];
+const types = [['all', 'All'], ['journal', 'Journal articles'], ['conf', 'Congress abstracts']];
+const jsonld = {
+  '@context': 'https://schema.org', '@type': 'ItemList', name: 'Publications of Dr. Mohamed Khalil',
+  itemListElement: site.publications.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'ScholarlyArticle', name: p.title, datePublished: p.year, url: p.href, author: { '@type': 'Person', name: 'Mohamed Khalil' } } })),
+};
+---
+<Base title="Research and publications" description="Six publications by Dr. Mohamed Khalil on fluid responsiveness, lung ultrasound, sepsis and nutrition in critical illness, with filters by type and topic." jsonld={jsonld} current="research">
+
+<section class="band" style="padding-bottom:32px">
+  <div class="wrap" style="display:grid;gap:14px">
+    <div class="label">Research and publications</div>
+    <h1 class="h-l">20+ years of clinical inquiry</h1>
+    <p class="lede">Peer-reviewed articles and ESICM congress abstracts on haemodynamics, lung ultrasound, sepsis and nutrition in critical illness.</p>
+  </div>
+</section>
+
+<section class="wrap" style="padding-bottom:96px">
+  <div class="filters">
+    <div class="row"><span>Find</span><input type="search" id="pub-q" placeholder="Search titles and journals" aria-label="Search publications"></div>
+    <div class="row" role="group" aria-label="Filter by type"><span>Type</span>{types.map(([v, l], i) => <button class="pill" type="button" data-group="type" data-v={v} aria-pressed={i === 0 ? 'true' : 'false'}>{l}</button>)}</div>
+    <div class="row" role="group" aria-label="Filter by topic"><span>Topic</span>{topics.map(([v, l], i) => <button class="pill" type="button" data-group="topic" data-v={v} aria-pressed={i === 0 ? 'true' : 'false'}>{l}</button>)}</div>
+  </div>
+  <p id="pub-count" aria-live="polite" style="color:var(--muted);font-size:14px;padding:16px 0 4px">Showing {site.publications.length} of {site.publications.length} publications</p>
+  <ol class="pubs">
+    {site.publications.map((p) => (
+      <li class="pub" data-type={p.type} data-topic={p.topic} data-text={(p.title + ' ' + p.venue + ' ' + p.kind).toLowerCase()}>
+        <div class="yr">{p.year}</div>
+        <div>
+          <div class="label">{p.kind}</div>
+          <h2>{p.title}</h2>
+          <div class="venue">{p.venue}</div>
+          {p.summary && <div class="sum">{p.summary}</div>}
+        </div>
+        <a class="btn btn-line" href={p.href} rel="noopener">{p.cta}</a>
+      </li>
+    ))}
+  </ol>
+  <p id="pub-empty" hidden style="padding:32px 0;color:var(--soft)">No publication matches these filters. Choose another topic or clear the search.</p>
+</section>
+
+<script is:inline>
+{
+  const state = { type: 'all', topic: 'all', q: '' };
+  const items = [...document.querySelectorAll('.pub')];
+  const count = document.getElementById('pub-count');
+  const empty = document.getElementById('pub-empty');
+  const apply = () => {
+    let n = 0;
+    items.forEach((el) => {
+      const ok = (state.type === 'all' || el.dataset.type === state.type) && (state.topic === 'all' || el.dataset.topic === state.topic) && (!state.q || el.dataset.text.includes(state.q));
+      el.hidden = !ok; if (ok) n++;
+    });
+    count.textContent = `Showing ${n} of ${items.length} publications`;
+    empty.hidden = n !== 0;
+  };
+  document.querySelectorAll('.pill').forEach((b) => b.addEventListener('click', () => {
+    const g = b.dataset.group; state[g] = b.dataset.v;
+    document.querySelectorAll(`.pill[data-group="${g}"]`).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    apply();
+  }));
+  document.getElementById('pub-q').addEventListener('input', (e) => { state.q = e.target.value.trim().toLowerCase(); apply(); });
+}
+</script>
+</Base>
