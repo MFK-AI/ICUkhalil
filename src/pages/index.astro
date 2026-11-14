@@ -65,6 +65,32 @@ const jsonld = {
   </div>
 </section>
 
+<section class="band ink-3" id="experience" aria-labelledby="journey">
+  <div class="wrap" style="max-width:1180px">
+    <div class="center-head rv">
+      <div class="label">20+ years of excellence</div>
+      <h2 class="h-l" id="journey">Career journey</h2>
+      <p class="lede">From Alexandria to Dubai, eight intensive care posts across three countries.</p>
+    </div>
+    <ol class="tl">
+      {site.jobs.map((j) => (
+        <li class="rv">
+          <span class={`dot${j.current ? ' now' : ''}`} aria-hidden="true"></span>
+          <div class="cell">
+            <div class="box">
+              {j.current && <span class="badge">CURRENT</span>}
+              <div class="when">{j.dates}</div>
+              <h3 class="role">{j.role}</h3>
+              <div class="place">{j.place}</div>
+              <div class="city">{j.city}</div>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
 <section class="band" id="expertise">
   <div class="wrap">
     <div class="section-head rv"><div><div class="label">Clinical mastery</div><h2 class="h-l">Areas of expertise</h2></div></div>
